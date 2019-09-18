@@ -40,8 +40,7 @@
                     </div>
                     <div class="flex border-b border-40">
                         <div class="w-1/5 px-8 py-6"><label for="price" class="inline-block text-80 pt-2 leading-tight">
-                            Price is Override
-                        </label></div>
+                            Price is Override</label></div>
                         <div class="py-6 px-8 w-1/2">
                             <input class="mr-2 leading-tight" type="checkbox" name="override" v-model="override">
                             <div class="help-text help-text mt-2"></div>
