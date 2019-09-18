@@ -308,6 +308,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['resourceName', 'resourceId', 'field'],
@@ -489,56 +492,50 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "flex border-b border-40" }, [
-            _c("div", { staticClass: "md:w-1/3" }),
+            _vm._m(4),
             _vm._v(" "),
-            _c(
-              "label",
-              { staticClass: "md:w-2/3 block text-gray-500 font-bold" },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.override,
-                      expression: "override"
-                    }
-                  ],
-                  staticClass: "mr-2 leading-tight",
-                  attrs: { type: "checkbox", name: "override" },
-                  domProps: {
-                    checked: Array.isArray(_vm.override)
-                      ? _vm._i(_vm.override, null) > -1
-                      : _vm.override
-                  },
-                  on: {
-                    change: function($event) {
-                      var $$a = _vm.override,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.override = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.override = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
+            _c("div", { staticClass: "py-6 px-8 w-1/2" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.override,
+                    expression: "override"
+                  }
+                ],
+                staticClass: "mr-2 leading-tight",
+                attrs: { type: "checkbox", name: "override" },
+                domProps: {
+                  checked: Array.isArray(_vm.override)
+                    ? _vm._i(_vm.override, null) > -1
+                    : _vm.override
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.override,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.override = $$a.concat([$$v]))
                       } else {
-                        _vm.override = $$c
+                        $$i > -1 &&
+                          (_vm.override = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
                       }
+                    } else {
+                      _vm.override = $$c
                     }
                   }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-sm" }, [
-                  _vm._v("Price Override ")
-                ])
-              ]
-            )
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "help-text help-text mt-2" })
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -642,6 +639,25 @@ var staticRenderFns = [
           attrs: { for: "price" }
         },
         [_vm._v("\n                        Price\n                    ")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-1/5 px-8 py-6" }, [
+      _c(
+        "label",
+        {
+          staticClass: "inline-block text-80 pt-2 leading-tight",
+          attrs: { for: "price" }
+        },
+        [
+          _vm._v(
+            "\n                        Price is Override\n                    "
+          )
+        ]
       )
     ])
   }
