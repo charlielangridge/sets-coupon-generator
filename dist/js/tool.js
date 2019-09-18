@@ -297,11 +297,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['resourceName', 'resourceId', 'field'],
     data: function data() {
         return {
+            code: '',
             qty: null,
             price: null,
             override: false
@@ -312,13 +324,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         reset: function reset() {
             this.qty = null;
+            this.code = '';
             this.price = null;
             this.override = false;
         },
         generateCoupons: function generateCoupons() {
             if (this.qty !== null && this.qty > 0) {
-                if (this.price != null && this.price > 0) {
-                    this.runCouponGeneration();
+                if (this.price !== null && this.price > 0) {
+                    if (this.code !== null && this.code !== '') {
+                        this.runCouponGeneration();
+                    } else {
+                        alert('Code needed');
+                    }
                 } else {
                     alert('Price needed');
                 }
@@ -330,6 +347,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             Nova.request().post('/nova-vendor/sets-coupon-generator/generate', {
+                code: this.code,
                 eventId: this.resourceId,
                 qty: this.qty,
                 price: this.price,
@@ -372,6 +390,37 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
+                    value: _vm.code,
+                    expression: "code"
+                  }
+                ],
+                staticClass:
+                  "w-full form-control form-input form-input-bordered",
+                attrs: { id: "code", type: "text", name: "code" },
+                domProps: { value: _vm.code },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.code = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "help-text help-text mt-2" })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex border-b border-40" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "py-6 px-8 w-1/2" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
                     value: _vm.qty,
                     expression: "qty"
                   }
@@ -402,7 +451,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "flex border-b border-40" }, [
-            _vm._m(2),
+            _vm._m(3),
             _vm._v(" "),
             _c("div", { staticClass: "py-6 px-8 w-1/2" }, [
               _c("input", {
@@ -545,6 +594,21 @@ var staticRenderFns = [
       _c("h1", { staticClass: "flex-no-shrink text-90 font-normal text-2xl" }, [
         _vm._v("Generate Coupons")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w-1/5 px-8 py-6" }, [
+      _c(
+        "label",
+        {
+          staticClass: "inline-block text-80 pt-2 leading-tight",
+          attrs: { for: "price" }
+        },
+        [_vm._v("\n                        Code\n                    ")]
+      )
     ])
   },
   function() {

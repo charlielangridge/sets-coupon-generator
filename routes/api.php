@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
      $qty_failed = 0;
      for ($i = 1; $i <= $request->qty; $i++){
          $coupon = GenerateCoupon::dispatchNow([
+             'code' => $request->code,
              'event_id' => $request->eventId,
              'price' => $request->price,
              'override' => $request->override

@@ -7,6 +7,17 @@
             <div class="relative">
                 <div class="card mb-6">
                     <div class="flex border-b border-40">
+                        <div class="w-1/5 px-8 py-6"><label for="price" class="inline-block text-80 pt-2 leading-tight">
+                            Code
+                        </label></div>
+                        <div class="py-6 px-8 w-1/2">
+                            <input id="code" type="text" name="code" v-model="code"
+                                   class="w-full form-control form-input form-input-bordered">
+                            <div class="help-text help-text mt-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex border-b border-40">
                         <div class="w-1/5 px-8 py-6"><label for="qty" class="inline-block text-80 pt-2 leading-tight">
                             Number of Coupons
                         </label></div>
@@ -59,6 +70,7 @@
         props: ['resourceName', 'resourceId', 'field'],
         data() {
             return {
+                code: '',
                 qty: null,
                 price: null,
                 override: false,
@@ -69,13 +81,18 @@
         methods: {
             reset() {
                 this.qty = null;
+                this.code = '';
                 this.price = null;
                 this.override = false;
             },
             generateCoupons() {
                 if (this.qty !== null && this.qty > 0) {
-                    if (this.price != null && this.price > 0) {
-                        this.runCouponGeneration();
+                    if (this.price !== null && this.price > 0) {
+                        if (this.code !== null && this.code !== '') {
+                            this.runCouponGeneration();
+                        } else {
+                            alert('Code needed');
+                        }
                     } else {
                         alert('Price needed');
                     }
@@ -85,6 +102,7 @@
             },
             runCouponGeneration() {
                 Nova.request().post('/nova-vendor/sets-coupon-generator/generate', {
+                    code: this.code,
                     eventId: this.resourceId,
                     qty: this.qty,
                     price: this.price,
