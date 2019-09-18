@@ -39,11 +39,14 @@
                         </div>
                     </div>
                     <div class="flex border-b border-40">
-                        <div class="md:w-1/3"></div>
-                        <label class="md:w-2/3 block text-gray-500 font-bold">
+                        <div class="w-1/5 px-8 py-6"><label for="price" class="inline-block text-80 pt-2 leading-tight">
+                            Price is Override
+                        </label></div>
+                        <div class="py-6 px-8 w-1/2">
                             <input class="mr-2 leading-tight" type="checkbox" name="override" v-model="override">
-                            <span class="text-sm">Price Override </span>
-                        </label>
+                            <div class="help-text help-text mt-2"></div>
+                        </div>
+
                     </div>
 
                 </div>
