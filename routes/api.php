@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
          $coupon = GenerateCoupon::dispatchNow([
              'event_id' => $request->eventId,
              'price' => $request->price,
+             'override' => $request->override
          ]);
          if($coupon) { $qty_generated++;} else {$qty_failed++;}
      }
